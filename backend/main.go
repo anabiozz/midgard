@@ -3,6 +3,8 @@ package main
 import (
 	"os"
 	"github.com/gin-gonic/gin"
+	"heimdallProject/midgard/backend/endpoints"
+	"heimdallProject/midgard/backend/handlers"
 )
 
 func port() string{
@@ -16,7 +18,8 @@ func port() string{
 func main() {
 	engine := gin.Default()
 
-	engine.GET("/api/")
+	engine.GET("/query/elastic", handlers.ElasticQuery())
+	engine.GET("/api/get-charts", endpoints.GetChartsEndpoint())
 
 	engine.Run(port())
 }
